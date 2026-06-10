@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: rent_astana_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-rent_astana}
+      POSTGRES_USER: ${POSTGRES_USER:-rent}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rent}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend/migrations:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rent -d rent_astana"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./backend
+    container_name: rent_astana_api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      HTTP_PORT: ${API_PORT:-8080}
+      DATABASE_URL: postgres://${POSTGRES_USER:-rent}:${POSTGRES_PASSWORD:-rent}@postgres:5432/${POSTGRES_DB:-rent_astana}?sslmode=disable
+      JWT_SECRET: ${JWT_SECRET:-local-dev-secret-change-on-server}
+      UPLOAD_ROOT: /data/bazarent
+      PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:8080}
+    ports:
+      - "${API_PORT:-8080}:8080"
+    volumes:
+      - ${FILE_STORAGE_PATH:-./.local-storage/bazarent}:/data/bazarent
+
+volumes:
+  postgres_data:
