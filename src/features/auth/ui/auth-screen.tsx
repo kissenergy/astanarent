@@ -1,7 +1,7 @@
 import { router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { KeyboardAvoidingView, Platform, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
-import { signInWithEmail, signUpWithEmail } from '../data/auth-repository';
+import { useSession } from '../data/use-session';
 import { AuthMode, AuthFormValues } from '../domain/auth-types';
 import { formatKzPhoneInput } from '../../../shared/lib/phone';
 import { useTheme } from '../../../shared/theme/theme-provider';
@@ -15,6 +15,7 @@ const initialValues: AuthFormValues = {
 
 export function AuthScreen() {
   const { theme } = useTheme();
+  const { signIn, signUp } = useSession();
   const params = useLocalSearchParams<{ intent?: string }>();
   const [mode, setMode] = useState<AuthMode>('sign-in');
   const [values, setValues] = useState<AuthFormValues>(initialValues);
@@ -33,9 +34,9 @@ export function AuthScreen() {
       setErrorMessage(null);
 
       if (isSignUp) {
-        await signUpWithEmail(values);
+        await signUp(values);
       } else {
-        await signInWithEmail(values);
+        await signIn(values);
       }
 
       router.replace('/');

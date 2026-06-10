@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
-import { signOut, updateMe } from '../auth/data/auth-repository';
+import { updateMe } from '../auth/data/auth-repository';
 import { useSession } from '../auth/data/use-session';
 import { formatKzPhoneInput, normalizeKzPhone } from '../../shared/lib/phone';
 import { useTheme } from '../../shared/theme/theme-provider';
@@ -9,7 +9,7 @@ import { TooltipPressable } from '../../shared/ui/tooltip-pressable';
 
 export function ProfileScreen() {
   const { theme } = useTheme();
-  const { user, loading } = useSession();
+  const { user, loading, refresh, signOut } = useSession();
   const [phone, setPhone] = useState('+7');
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -40,6 +40,7 @@ export function ProfileScreen() {
     try {
       setSaving(true);
       await updateMe({ phone: normalized });
+      await refresh();
       setMessage('Телефон обновлен');
     } catch (error) {
       setMessage(error instanceof Error ? error.message : 'Не удалось обновить телефон');
