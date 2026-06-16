@@ -31,6 +31,31 @@ export function FeedScreen() {
     void refetch();
   };
 
+  const choosePhoneAction = (listingPhone: string, realtorPhone: string, action: 'call' | 'whatsapp') => {
+    const normalizedListingPhone = listingPhone.replace(/\D/g, '');
+    const normalizedRealtorPhone = realtorPhone.replace(/\D/g, '');
+
+    const openPhone = (phone: string) => {
+      if (action === 'call') {
+        void Linking.openURL(`tel:${phone}`);
+        return;
+      }
+
+      void Linking.openURL(`https://wa.me/${phone.replace(/\D/g, '')}`);
+    };
+
+    if (normalizedListingPhone === normalizedRealtorPhone) {
+      openPhone(listingPhone);
+      return;
+    }
+
+    Alert.alert(action === 'call' ? 'Кому позвонить?' : 'Кому написать?', 'Выберите номер для связи', [
+      { text: `Объявление: ${listingPhone}`, onPress: () => openPhone(listingPhone) },
+      { text: `Риелтор: ${realtorPhone}`, onPress: () => openPhone(realtorPhone) },
+      { text: 'Отмена', style: 'cancel' },
+    ]);
+  };
+
   return (
     <View style={[styles.screen, { backgroundColor: theme.colors.background }]}>
       <View style={styles.header}>
@@ -78,10 +103,8 @@ export function FeedScreen() {
                         message: `${listing.title}\n${listing.priceLabel}\n${listing.address}`,
                       })
                     }
-                    onCall={() => Linking.openURL(`tel:${listing.listingPhone}`)}
-                    onWhatsapp={() =>
-                      Linking.openURL(`https://wa.me/${listing.listingPhone.replace(/\D/g, '')}`)
-                    }
+                    onCall={() => choosePhoneAction(listing.listingPhone, listing.realtorPhone, 'call')}
+                    onWhatsapp={() => choosePhoneAction(listing.listingPhone, listing.realtorPhone, 'whatsapp')}
                     onToggleReviews={() =>
                       setExpandedReviewsListingId((current) => (current === listing.id ? null : listing.id))
                     }
