@@ -38,7 +38,7 @@ export function ActionRail({
           styles.button,
           styles.wideButton,
           {
-            backgroundColor: reviewsExpanded ? 'rgba(47,125,98,0.78)' : theme.colors.glass,
+            backgroundColor: reviewsExpanded ? 'rgba(49,91,255,0.82)' : theme.colors.glass,
             borderColor: reviewsExpanded ? 'rgba(255,255,255,0.22)' : theme.colors.glassBorder,
           },
         ]}
@@ -103,15 +103,15 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: 'center',
-    borderRadius: 14,
+    borderRadius: 18,
     borderWidth: 1,
     minHeight: 58,
     justifyContent: 'center',
     paddingHorizontal: 5,
     paddingVertical: 6,
-    shadowColor: '#000',
-    shadowOpacity: 0.09,
-    shadowRadius: 12,
+    shadowColor: '#1D2B55',
+    shadowOpacity: 0.12,
+    shadowRadius: 14,
   },
   wideButton: {
     minHeight: 68,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 9,
-    fontWeight: '600',
+    fontWeight: '800',
     textAlign: 'center',
   },
 });

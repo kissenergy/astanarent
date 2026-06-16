@@ -38,13 +38,13 @@ export function FeedScreen() {
           <View style={styles.logoRow}>
             <View style={[styles.logoMark, { backgroundColor: theme.colors.accent }]} />
             <View>
-              <Text style={[styles.brand, { color: theme.colors.text }]}>ASTANA</Text>
+              <Text style={[styles.brand, { color: theme.colors.text }]}>AstaRent</Text>
               <Text style={[styles.subtitle, { color: theme.colors.accent }]}>аренда квартир</Text>
             </View>
           </View>
         </View>
         <View style={styles.headerActions}>
-          <TooltipPressable tooltip="Переключить светлую и темную тему" onPress={toggleTheme} style={[styles.roundButton, { backgroundColor: theme.colors.glass, borderColor: theme.colors.glassBorder }]}>
+          <TooltipPressable tooltip="Переключить светлую и темную тему" onPress={toggleTheme} style={[styles.roundButton, { backgroundColor: theme.colors.surface, borderColor: theme.colors.border }]}>
             <Text style={{ color: theme.colors.text }}>{mode === 'light' ? '☾' : '☀'}</Text>
           </TooltipPressable>
         </View>
@@ -149,23 +149,23 @@ export function FeedScreen() {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    paddingTop: 54,
+    paddingTop: 50,
   },
   header: {
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 18,
-    paddingBottom: 12,
+    paddingBottom: 14,
   },
   brand: {
-    fontSize: 24,
-    fontWeight: '800',
+    fontSize: 27,
+    fontWeight: '900',
     letterSpacing: 0,
   },
   subtitle: {
     fontSize: 12,
-    fontWeight: '700',
+    fontWeight: '900',
     textTransform: 'uppercase',
   },
   headerActions: {
@@ -178,18 +178,24 @@ const styles = StyleSheet.create({
     gap: 9,
   },
   logoMark: {
-    borderRadius: 8,
-    height: 28,
-    transform: [{ rotate: '12deg' }],
-    width: 10,
+    borderRadius: 11,
+    height: 34,
+    shadowColor: '#315BFF',
+    shadowOpacity: 0.24,
+    shadowRadius: 12,
+    transform: [{ rotate: '10deg' }],
+    width: 14,
   },
   roundButton: {
     alignItems: 'center',
     borderWidth: 1,
-    borderRadius: 18,
-    height: 36,
+    borderRadius: 20,
+    height: 40,
     justifyContent: 'center',
-    width: 36,
+    shadowColor: '#1D2B55',
+    shadowOpacity: 0.08,
+    shadowRadius: 12,
+    width: 40,
   },
   addButton: {
     alignItems: 'center',
@@ -222,9 +228,9 @@ const styles = StyleSheet.create({
     borderRadius: 26,
     elevation: 7,
     overflow: 'hidden',
-    shadowColor: '#000',
-    shadowOpacity: 0.16,
-    shadowRadius: 18,
+    shadowColor: '#1D2B55',
+    shadowOpacity: 0.18,
+    shadowRadius: 22,
   },
   imageFill: {
     flex: 1,
@@ -232,7 +238,7 @@ const styles = StyleSheet.create({
   },
   imageScrim: {
     bottom: 0,
-    backgroundColor: 'rgba(0,0,0,0.28)',
+    backgroundColor: 'rgba(6,19,38,0.22)',
     left: 0,
     position: 'absolute',
     right: 0,
@@ -240,15 +246,15 @@ const styles = StyleSheet.create({
   },
   pullHint: {
     alignSelf: 'center',
-    backgroundColor: 'rgba(255,255,255,0.88)',
-    borderRadius: 18,
+    backgroundColor: 'rgba(255,255,255,0.84)',
+    borderRadius: 22,
     paddingHorizontal: 14,
     paddingVertical: 8,
     position: 'absolute',
     top: 14,
   },
   pullHintText: {
-    color: '#334037',
+    color: '#1E2A44',
     fontSize: 11,
     fontWeight: '700',
   },
@@ -263,7 +269,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#FFFFFF',
     fontSize: 22,
-    fontWeight: '800',
+    fontWeight: '900',
   },
   address: {
     color: '#F4F1EA',
@@ -272,8 +278,8 @@ const styles = StyleSheet.create({
   },
   price: {
     color: '#FFFFFF',
-    fontSize: 26,
-    fontWeight: '800',
+    fontSize: 27,
+    fontWeight: '900',
     marginTop: 14,
   },
   meta: {
@@ -283,13 +289,13 @@ const styles = StyleSheet.create({
   },
   reviews: {
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: 24,
     elevation: 3,
     marginTop: 10,
     padding: 16,
-    shadowColor: '#000',
-    shadowOpacity: 0.08,
-    shadowRadius: 14,
+    shadowColor: '#1D2B55',
+    shadowOpacity: 0.1,
+    shadowRadius: 18,
   },
   reviewsHeader: {
     gap: 4,

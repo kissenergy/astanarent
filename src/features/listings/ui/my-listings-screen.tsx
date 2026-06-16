@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 28,
-    fontWeight: '800',
+    fontWeight: '900',
   },
   add: {
     fontSize: 34,
@@ -95,19 +95,19 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   row: {
-    borderRadius: 16,
+    borderRadius: 22,
     borderWidth: 1,
     elevation: 3,
     flexDirection: 'row',
     gap: 12,
     marginBottom: 12,
     padding: 10,
-    shadowColor: '#000',
-    shadowOpacity: 0.08,
-    shadowRadius: 14,
+    shadowColor: '#1D2B55',
+    shadowOpacity: 0.1,
+    shadowRadius: 18,
   },
   thumb: {
-    borderRadius: 10,
+    borderRadius: 16,
     height: 104,
     width: 104,
   },
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
   },
   rowTitle: {
     fontSize: 14,
-    fontWeight: '800',
+    fontWeight: '900',
   },
   rowText: {
     fontSize: 12,
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     marginTop: 8,
   },
   status: {
-    borderRadius: 9,
+    borderRadius: 999,
     paddingHorizontal: 10,
     paddingVertical: 6,
   },
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   },
   editButton: {
     alignItems: 'center',
-    borderRadius: 9,
+    borderRadius: 999,
     borderWidth: 1,
     marginTop: 8,
     paddingHorizontal: 10,

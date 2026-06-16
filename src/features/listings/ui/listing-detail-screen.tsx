@@ -66,7 +66,7 @@ export function ListingDetailScreen() {
         </View>
       </View>
 
-      <MediaCarousel media={data.media ?? []} width={mediaWidth} height={280} borderRadius={12} />
+      <MediaCarousel media={data.media ?? []} width={mediaWidth} height={300} borderRadius={24} />
       <Text style={[styles.title, { color: theme.colors.text }]}>{data.title}</Text>
       <Text style={[styles.price, { color: theme.colors.text }]}>{formatKztPerMonth(data.priceMonth)}</Text>
 
@@ -120,18 +120,18 @@ const styles = StyleSheet.create({
   headerActions: { flexDirection: 'row', gap: 16 },
   headerIcon: { fontSize: 24 },
   hero: { borderRadius: 18, height: 250, width: '100%' },
-  title: { fontSize: 22, fontWeight: '800', marginTop: 16 },
-  price: { fontSize: 24, fontWeight: '900', marginTop: 6 },
+  title: { fontSize: 23, fontWeight: '900', marginTop: 16 },
+  price: { fontSize: 27, fontWeight: '900', marginTop: 6 },
   address: { fontSize: 13, fontWeight: '800', marginTop: 8 },
   stats: { flexDirection: 'row', gap: 10, marginTop: 16 },
-  stat: { borderRadius: 12, borderWidth: 1, flex: 1, padding: 12 },
+  stat: { borderRadius: 18, borderWidth: 1, flex: 1, padding: 12 },
   statValue: { fontSize: 16, fontWeight: '900' },
   statLabel: { fontSize: 11, fontWeight: '700', marginTop: 3 },
   sectionTitle: { fontSize: 18, fontWeight: '900', marginTop: 20 },
   description: { fontSize: 14, lineHeight: 21, marginTop: 8 },
-  contact: { borderRadius: 12, borderWidth: 1, marginTop: 10, padding: 14 },
+  contact: { borderRadius: 18, borderWidth: 1, marginTop: 10, padding: 14 },
   contactText: { fontSize: 14, fontWeight: '800' },
-  reviewRow: { borderRadius: 12, borderWidth: 1, marginTop: 8, padding: 12 },
+  reviewRow: { borderRadius: 18, borderWidth: 1, marginTop: 8, padding: 12 },
   reviewAuthor: { fontSize: 13, fontWeight: '900' },
   reviewText: { fontSize: 13, lineHeight: 19, marginTop: 4 },
 });

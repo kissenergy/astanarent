@@ -5,6 +5,7 @@ import { updateMe } from '../auth/data/auth-repository';
 import { useSession } from '../auth/data/use-session';
 import { formatKzPhoneInput, normalizeKzPhone } from '../../shared/lib/phone';
 import { useTheme } from '../../shared/theme/theme-provider';
+import { StatusNotice } from '../../shared/ui/status-notice';
 import { TooltipPressable } from '../../shared/ui/tooltip-pressable';
 
 export function ProfileScreen() {
@@ -70,7 +71,13 @@ export function ProfileScreen() {
           <Text style={styles.primaryText}>{saving ? 'Сохраняем...' : 'Сохранить телефон'}</Text>
         </TooltipPressable>
 
-        {message ? <Text style={[styles.message, { color: theme.colors.accent }]}>{message}</Text> : null}
+        {message ? (
+          <StatusNotice
+            title={message.includes('обновлен') ? 'Готово' : 'Проверьте данные'}
+            message={message}
+            tone={message.includes('обновлен') ? 'success' : 'danger'}
+          />
+        ) : null}
 
         {user.email ? (
           <>
@@ -156,11 +163,6 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     fontSize: 14,
     fontWeight: '800',
-  },
-  message: {
-    fontSize: 13,
-    fontWeight: '700',
-    marginTop: 10,
   },
   menu: {
     borderRadius: 14,

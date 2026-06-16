@@ -13,6 +13,7 @@ import {
 import { formatKzPhoneInput, normalizeKzPhone } from '../../../shared/lib/phone';
 import { useTheme } from '../../../shared/theme/theme-provider';
 import { TooltipPressable } from '../../../shared/ui/tooltip-pressable';
+import { StatusNotice } from '../../../shared/ui/status-notice';
 
 type PickedAsset = {
   uri: string;
@@ -159,6 +160,11 @@ export function EditListingScreen() {
       </View>
 
       <Text style={[styles.label, { color: theme.colors.text }]}>Текущие фото / видео</Text>
+      <StatusNotice
+        title="Лимиты загрузки"
+        message="Всего до 8 файлов. Фото до 12 МБ, видео до 60 секунд и 80 МБ."
+        tone="info"
+      />
       <View style={styles.mediaGrid}>
         {(data.media ?? []).map((media) => (
           <View key={media.id} style={styles.mediaTile}>
@@ -205,9 +211,7 @@ export function EditListingScreen() {
       </View>
 
       {error ? (
-        <View style={[styles.errorBox, { backgroundColor: theme.colors.dangerSoft, borderColor: theme.colors.danger }]}>
-          <Text style={[styles.errorText, { color: theme.colors.danger }]}>{error}</Text>
-        </View>
+        <StatusNotice title="Не удалось сохранить" message={error} tone="danger" />
       ) : null}
 
       <TooltipPressable tooltip="Сохранить изменения объявления" onPress={() => saveMutation.mutate()} disabled={saveMutation.isPending} style={[styles.saveButton, { backgroundColor: theme.colors.accent }]}>
@@ -269,8 +273,6 @@ const styles = StyleSheet.create({
   statusRow: { flexDirection: 'row', gap: 10 },
   statusButton: { alignItems: 'center', borderRadius: 12, borderWidth: 1, flex: 1, minHeight: 48, justifyContent: 'center' },
   statusText: { fontSize: 13, fontWeight: '900' },
-  errorBox: { borderRadius: 14, borderWidth: 1, marginTop: 14, padding: 12 },
-  errorText: { fontSize: 13, fontWeight: '800' },
   saveButton: { alignItems: 'center', borderRadius: 14, elevation: 4, justifyContent: 'center', marginTop: 22, minHeight: 58, shadowColor: '#000', shadowOpacity: 0.14, shadowRadius: 14 },
   saveButtonText: { color: '#FFFFFF', fontSize: 16, fontWeight: '900' },
 });

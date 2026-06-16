@@ -5,6 +5,7 @@ import { useSession } from '../data/use-session';
 import { AuthMode, AuthFormValues } from '../domain/auth-types';
 import { formatKzPhoneInput } from '../../../shared/lib/phone';
 import { useTheme } from '../../../shared/theme/theme-provider';
+import { StatusNotice } from '../../../shared/ui/status-notice';
 
 const initialValues: AuthFormValues = {
   email: '',
@@ -110,9 +111,7 @@ export function AuthScreen() {
         />
 
         {errorMessage ? (
-          <View style={[styles.errorBox, { backgroundColor: theme.colors.dangerSoft, borderColor: theme.colors.danger }]}>
-            <Text style={[styles.errorText, { color: theme.colors.danger }]}>{errorMessage}</Text>
-          </View>
+          <StatusNotice title="Не получилось войти" message={errorMessage} tone="danger" />
         ) : null}
 
         <Pressable disabled={loading} onPress={submit} style={[styles.submit, { backgroundColor: theme.colors.accent }]}>
@@ -192,18 +191,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     minHeight: 52,
     paddingHorizontal: 14,
-  },
-  errorBox: {
-    borderRadius: 14,
-    borderWidth: 1,
-    marginTop: 14,
-    paddingHorizontal: 14,
-    paddingVertical: 12,
-  },
-  errorText: {
-    fontSize: 13,
-    fontWeight: '700',
-    lineHeight: 18,
   },
   roleRow: {
     flexDirection: 'row',

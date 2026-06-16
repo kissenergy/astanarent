@@ -19,7 +19,7 @@ export function BottomNavigation() {
       style={[
         styles.wrap,
         {
-          backgroundColor: isDark ? 'rgba(8,27,32,0.78)' : 'rgba(255,254,251,0.78)',
+          backgroundColor: isDark ? 'rgba(16,29,53,0.86)' : 'rgba(255,255,255,0.88)',
           borderColor: isDark ? theme.colors.glassBorder : theme.colors.border,
         },
       ]}
@@ -83,7 +83,7 @@ function NavItem({
 const styles = StyleSheet.create({
   wrap: {
     alignItems: 'center',
-    borderRadius: 22,
+    borderRadius: 26,
     borderWidth: 1,
     bottom: 16,
     elevation: 8,
@@ -94,9 +94,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     position: 'absolute',
     right: 16,
-    shadowColor: '#000',
-    shadowOpacity: 0.16,
-    shadowRadius: 18,
+    shadowColor: '#1D2B55',
+    shadowOpacity: 0.18,
+    shadowRadius: 22,
   },
   item: {
     alignItems: 'center',

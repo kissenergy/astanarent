@@ -7,6 +7,7 @@ import { formatKzPhoneInput, normalizeKzPhone } from '../../../shared/lib/phone'
 import { useTheme } from '../../../shared/theme/theme-provider';
 import { useSession } from '../../auth/data/use-session';
 import { TooltipPressable } from '../../../shared/ui/tooltip-pressable';
+import { StatusNotice } from '../../../shared/ui/status-notice';
 
 type PickedAsset = {
   uri: string;
@@ -133,7 +134,11 @@ export function AddListingScreen() {
       </View>
 
       <Text style={[styles.label, { color: theme.colors.text }]}>Фото / Видео</Text>
-      <Text style={[styles.mediaHint, { color: theme.colors.textMuted }]}>До 8 файлов. Фото до 12 МБ, видео до 60 сек и 80 МБ.</Text>
+      <StatusNotice
+        title="Лимиты загрузки"
+        message="До 8 файлов в объявлении. Фото до 12 МБ, видео до 60 секунд и 80 МБ."
+        tone="info"
+      />
       <View style={styles.mediaGrid}>
         {assets.map((asset) => (
           <Image key={asset.uri} source={{ uri: asset.uri }} style={styles.mediaThumb} />
@@ -151,9 +156,7 @@ export function AddListingScreen() {
       <Field label="Телефон объявления" value={listingPhone} onChangeText={(value) => setListingPhone(formatKzPhoneInput(value))} keyboardType="phone-pad" />
 
       {error ? (
-        <View style={[styles.errorBox, { backgroundColor: theme.colors.dangerSoft, borderColor: theme.colors.danger }]}>
-          <Text style={[styles.errorText, { color: theme.colors.danger }]}>{error}</Text>
-        </View>
+        <StatusNotice title="Проверьте объявление" message={error} tone="danger" />
       ) : null}
 
       <TooltipPressable tooltip="Опубликовать объявление" onPress={publish} disabled={loading} style={[styles.publishButton, { backgroundColor: theme.colors.accent }]}>
@@ -285,16 +288,6 @@ const styles = StyleSheet.create({
     minHeight: 92,
     paddingTop: 12,
     textAlignVertical: 'top',
-  },
-  errorBox: {
-    borderRadius: 14,
-    borderWidth: 1,
-    marginTop: 14,
-    padding: 12,
-  },
-  errorText: {
-    fontSize: 13,
-    fontWeight: '700',
   },
   note: {
     fontSize: 12,

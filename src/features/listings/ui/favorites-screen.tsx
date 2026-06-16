@@ -39,12 +39,12 @@ function FavoriteRow({ item }: { item: ListingDTO }) {
 const styles = StyleSheet.create({
   screen: { flex: 1 },
   content: { padding: 16, paddingTop: 58, paddingBottom: 104 },
-  title: { fontSize: 28, fontWeight: '800', marginBottom: 16 },
+  title: { fontSize: 30, fontWeight: '900', marginBottom: 16 },
   muted: { fontSize: 14, fontWeight: '700' },
-  row: { borderRadius: 16, borderWidth: 1, elevation: 3, flexDirection: 'row', gap: 12, marginBottom: 12, padding: 10, shadowColor: '#000', shadowOpacity: 0.08, shadowRadius: 14 },
-  thumb: { borderRadius: 10, height: 96, width: 96 },
+  row: { borderRadius: 22, borderWidth: 1, elevation: 4, flexDirection: 'row', gap: 12, marginBottom: 12, padding: 10, shadowColor: '#1D2B55', shadowOpacity: 0.1, shadowRadius: 18 },
+  thumb: { borderRadius: 16, height: 96, width: 96 },
   rowBody: { flex: 1 },
-  rowTitle: { fontSize: 14, fontWeight: '800' },
+  rowTitle: { fontSize: 14, fontWeight: '900' },
   rowText: { fontSize: 12, marginTop: 3 },
-  rowPrice: { fontSize: 15, fontWeight: '800', marginTop: 5 },
+  rowPrice: { fontSize: 16, fontWeight: '900', marginTop: 5 },
 });
