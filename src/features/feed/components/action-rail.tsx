@@ -36,13 +36,13 @@ export function ActionRail({
       />
       <IconAction
         tooltip={reviewsExpanded ? 'Скрыть отзывы' : 'Показать отзывы'}
-        icon="●●●"
+        icon="☰"
         onPress={onToggleReviews}
-        activeColor={reviewsExpanded ? theme.colors.actionBlue : undefined}
+        activeColor={undefined}
         count={reviewsExpanded ? 'скрыть' : 'отзывы'}
       />
-      <IconAction tooltip="Позвонить" icon="☎" onPress={onCall} />
-      <IconAction tooltip="Написать в WhatsApp" icon="◔" onPress={onWhatsapp} activeColor={theme.colors.whatsapp} />
+      <IconAction tooltip="Позвонить" icon="☏" onPress={onCall} />
+      <IconAction tooltip="Написать в WhatsApp" icon="◉" onPress={onWhatsapp} activeColor={theme.colors.whatsapp} />
       <IconAction tooltip="Поделиться" icon="↗" onPress={onShare} />
       <IconAction tooltip="Описание" icon="▤" onPress={onDescription} />
     </View>
@@ -73,7 +73,7 @@ function IconAction({
 const styles = StyleSheet.create({
   rail: {
     alignItems: 'center',
-    gap: 12,
+    gap: 11,
     position: 'absolute',
     right: 12,
     top: 78,
@@ -83,13 +83,13 @@ const styles = StyleSheet.create({
   action: {
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: 42,
+    minHeight: 46,
     width: 54,
   },
   icon: {
-    fontSize: 30,
+    fontSize: 28,
     fontWeight: '900',
-    lineHeight: 32,
+    lineHeight: 30,
     textAlign: 'center',
     textShadowColor: 'rgba(0,0,0,0.45)',
     textShadowOffset: { width: 0, height: 2 },
