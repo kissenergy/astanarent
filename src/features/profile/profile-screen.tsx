@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { updateMe } from '../auth/data/auth-repository';
 import { useSession } from '../auth/data/use-session';
 import { formatKzPhoneInput, normalizeKzPhone } from '../../shared/lib/phone';
@@ -51,7 +51,7 @@ export function ProfileScreen() {
   };
 
   return (
-    <View style={[styles.screen, { backgroundColor: theme.colors.background }]}>
+    <ScrollView style={[styles.screen, { backgroundColor: theme.colors.background }]} contentContainerStyle={styles.content}>
       <Text style={[styles.title, { color: theme.colors.text }]}>Личный кабинет</Text>
       <View style={[styles.card, { backgroundColor: theme.colors.surface, borderColor: theme.colors.border }]}>
         <Text style={[styles.label, { color: theme.colors.textMuted }]}>Роль</Text>
@@ -108,15 +108,17 @@ export function ProfileScreen() {
       >
         <Text style={[styles.logoutText, { color: theme.colors.text }]}>Выйти</Text>
       </Pressable>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
+  },
+  content: {
     padding: 20,
-    paddingBottom: 104,
+    paddingBottom: 148,
     paddingTop: 64,
   },
   title: {
@@ -178,6 +180,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 14,
     borderWidth: 1,
+    marginBottom: 28,
     marginTop: 16,
     minHeight: 52,
     justifyContent: 'center',
